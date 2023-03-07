@@ -1,10 +1,16 @@
-![test](https://github.com/YukaPurple/robosys2022/actions/workflows/test.yml/badge.svg)
+![test](https://github.com/YukaPurple/mypkg/actions/workflows/test.yml/badge.svg)
 
 # mypkg
 このリポジトリは千葉工業大学ロボットシステム学の講義で作成したROS2のパッケージである。
 
 talkerとlistenerという2つのノードが通信するのを確認することができる。
 
+#インストール方法
+1. 環境内にROS2がインストールされていることを確認する。
+2. 以下のコマンドを実行する
+```
+$ git clone git@github.com:YukaPurple/mypkg.git
+```
 
 # 機能
 ## talker
@@ -43,8 +49,9 @@ $ ros2 launch mypkg talk_listen.launch.py
 # テスト環境
 - Ubuntu 22.04
 
-# ソフトウェア
-- Python3.10
+# 必要なソフトウェア
+- ROS2
+- Python3.10.6
 
 # ライセンス
 
