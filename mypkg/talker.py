@@ -1,23 +1,23 @@
 # SPDX-FileCopyrightText: 2023 Yukari Watarai
 # SPDX-License-Identifier: BSD-3-Clauseimport rclpy 
 
-
+import rclpy
 from rclpy.node import Node
-from person_msgs.msg import Person
+from std_msgs.msg import Int16
+
+class Talker():
+    def __init__(self, node):
+        self.pub = node.create_publisher(Int16, "countup", 10)
+        self.n = 0
+        node.create_timer(0.5, self.cb)
+
+    def cb(self):
+        msg = Int16()
+        msg.data = self.n
+        self.pub.publish(msg)
+        self.n += 1
 
 rclpy.init()
 node = Node("talker")
-pub = node.create_publisher(Person, "person", 10)
-
-n = 0
-
- def cb():          
-     global n     
-     msg = Person()
-     msg.name = "ムラサキ"
-     msg.data = n
-     pub.publish(msg) 
-     n += 1
-
-node.create_timer(0.5, cb)
-rclpy.spin(node)   
+talker = Talker(node)
+rclpy.spin(node)
